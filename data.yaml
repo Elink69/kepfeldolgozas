@@ -1,0 +1,10 @@
+names: 
+- '1'
+- '2'
+- '3'
+- '4'
+- '5'
+- '6'
+nc: 6
+train: Images/train
+val: Images/val
