@@ -11,8 +11,13 @@
     - python -m pip install -r requirements.txt (GPU support)
     - python -m pip install -r requirements_cpu.txt (CPU only)
 
-4. Futtassuk a main.py-t
-    - python main.py
+4. Navigáljunk a backend mappába
+    - cd backend
+
+5. Indítsuk el az API-t
+    - fastapi dev main.py
+
+6. Swagger elérhetőség: http://127.0.0.1:8000/docs
 
 # Model tanítás
 
