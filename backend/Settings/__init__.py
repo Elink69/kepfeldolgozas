@@ -1,1 +1,2 @@
 from .DiceDetectorSettings import DiceDetectorSettingsDep, DiceDetectorSettings
+from .ImageStoreSettings import ImageStoreSettingsDep, get_settings as ImageStoreSettings

@@ -10,7 +10,7 @@ class DiceDetectorSettings:
 
 
 @lru_cache
-def get_settings():
+def get_settings() -> DiceDetectorSettings:
     return DiceDetectorSettings()
 
 

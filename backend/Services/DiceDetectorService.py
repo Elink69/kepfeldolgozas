@@ -23,7 +23,7 @@ class DiceDetectorService:
                             "five",
                             "six"]
 
-    def detection_pipeline(self, image_stream: BinaryIO):
+    def detection_pipeline(self, image_stream: BinaryIO) -> dict[str, uuid.UUID | dict]:
         image = cv2.imdecode(np.asarray(bytearray(image_stream.read()), np.uint8), 1)
         preprocessed_image = self._preprocess_image(image)
         model_results: list[Results] = self.model(preprocessed_image)
