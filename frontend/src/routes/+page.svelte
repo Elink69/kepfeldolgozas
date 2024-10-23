@@ -6,3 +6,8 @@
     <li>Varga Dominik</li>
     <li>Dinnyés Dávid</li>
 </ol>
+<p><a href="/dice">Itt</a> lehet a kockákat leszámolni</p>
+
+<style>
+    
+</style>
