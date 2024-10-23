@@ -1,0 +1,316 @@
+.App {
+  min-height: 100vh;
+  background-color: #282c34;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  background-size: auto;
+}
+
+/*https://dev.to/sanchithasr/3-ways-to-center-elements-in-css-1m43#:~:text=3%20Ways%20To%20Center%20Elements%20In%20CSS%201,of%20grid.%20...%203%203.%20Using%20Position%20Property*/
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*input {*/
+/*  margin: 0.25rem 0;*/
+/*  padding: 1rem;*/
+/*  border:none;*/
+/*  border-radius: 10px;*/
+/*  background-color: #393d45;*/
+/*  color: white;*/
+/*}*/
+
+textarea {
+  margin: 0.25rem 0;
+  padding: 1rem;
+  border:none;
+  border-radius: 10px;
+  background-color: #393d45;
+  color: white;
+}
+
+.chakra-stack{
+  width: 40rem;
+}
+
+
+/*button:hover:enabled{*/
+/*  animation: change-color 0.5s linear;*/
+/*  background-color: #61dafb;*/
+/*  color: black;*/
+/*}*/
+
+@keyframes change-none-color {
+  0%{
+    background-color: #393d45;
+    color: #e91224;
+  }
+  100% {
+    background-color: #e91224;
+    color: white;
+  }
+}
+
+@keyframes change-color {
+  0%{
+    background-color: #393d45;
+    color: white;
+  }
+  100% {
+    background-color: #61dafb;
+    color: black;
+  }
+}
+
+.nav{
+  background-color: #393d45;
+  width: 100%;
+  max-height: 100vh;
+  display: flex;
+  text-align: center;
+  position: sticky;
+  top:0;
+}
+
+.nav-cim{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-cim-header{
+  font-family: Algerian;
+  font-size: 6vh;
+}
+
+.nav-item{
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  color:white;
+}
+
+.nav-item:hover {
+  color: #61dafb;
+}
+
+footer{
+  position: fixed;
+  bottom: 0px;
+  right: 0.5em;
+  width: 20%;
+}
+
+.copyright{
+  right:2rem;
+  font-size: 16px;
+  text-align: right;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.info-picture{
+  width:100%;
+}
+
+p.info-text {
+  font-size:1.5rem;
+}
+
+.col-4.paragraph{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: black 2px solid;
+}
+
+.paragraph::first-letter{
+  padding-left: 2rem;
+}
+
+.information-box{
+  background-color: white;
+  color:black;
+  border-radius: 15px;
+}
+
+.cim{
+  text-align: center;
+}
+
+.row-data{
+  padding-top: 1rem;
+}
+
+.custom-file-upload {
+  border: 1px solid #ffffff;
+  width: 10rem;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.custom-file-upload:hover{
+  animation: change-color 0.5s linear;
+  background-color: #61dafb;
+  color: black;
+}
+
+.scanners{
+  border: 1px solid #61dafb;
+  border-radius: 15px;
+}
+
+.ocr-result{
+  font-size:1rem;
+}
+
+
+#language-selector, #option-selector{
+  background-color: #61dafb;
+  width: 70%;
+  border:none;
+}
+
+#language-selector:hover, #option-selector:hover{
+  border: 1px solid white;
+}
+
+#ocr-button{
+  background-color: #282c34;
+  color: white;
+  border-radius:10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#ocr-button:hover{
+  background-color: #61dafb;
+  color: black;
+}
+
+.result-block{
+  display:flex;
+  justify-content:center;
+  align-items: center;
+}
+
+#ocr-result, #textarea_elso, #textarea_masodik, #textarea_harmadik, #textarea_negyedik{
+  background-color: #282c34;
+  color: white;
+  width: 50rem;
+  margin: 2rem;
+}
+
+.ocr-text{
+  font-size: 10px;
+}
+
+.login-btn, .register-btn, .choose-btn{
+  border: none;
+  background-color: #393d45;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  margin: 1rem
+}
+
+.choose-none-btn{
+  border: none;
+  background-color: #393d45;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #e91224;
+  font-size: 16px;
+  font-weigth: bold;
+  margin: 1rem
+}
+
+.choose-none-btn:hover{
+  animation: change-none-color 0.5s linear;
+  background-color: #e91224;
+  color: white;
+}
+
+.login-btn:hover:enabled, .register-btn:hover:enabled, .choose-btn:hover:enabled{
+  animation: change-color 0.5s linear;
+  background-color: #61dafb;
+  color:black;
+}
+
+.login-btn:disabled, .register-btn:disabled{
+  background-color: #282c34;
+  color:grey;
+}
+
+.authentication-forms{
+  padding: 3rem;
+  border: 1px solid grey;
+  border-radius: 10px;
+  margin: 0.5rem;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-message{
+  color: red;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.form-link{
+  color: #61dafb;
+  font-size: 1rem;
+}
+
+input:invalid{
+  margin: 0.25rem 0;
+  padding: 1rem;
+  border:2px solid red;
+  border-radius: 10px;
+  background-color: #393d45;
+  color: red;
+}
+
+.form-labels{
+  display: flex;
+  justify-content: left;
+}
+
+.form-inputs{
+  height: 3rem;
+  display: flex;
+  left: 45%;
+  position: absolute;
+}
+
+input {
+  margin: 0.25rem 0;
+  padding: 1rem;
+  border:none;
+  border-radius: 10px;
+  background-color: #393d45;
+  color: white;
+}
+
+#result-table td, #result-table th{
+  background-color: #393d45;
+  color: white;
+  border: 1px solid #61dafb;
+  text-align: center;
+}
+
+#result-table{
+  width: 80%;
+}
