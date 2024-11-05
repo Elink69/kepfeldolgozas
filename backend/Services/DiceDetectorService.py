@@ -1,7 +1,7 @@
 from functools import lru_cache
 from Utils import *
 import numpy as np
-from Settings import DiceDetectorSettingsDep, DiceDetectorSettings
+from Settings import DiceDetectorSettingsDep, ImageStoreSettingsDep, DiceDetectorSettings, ImageStoreSettings
 from ultralytics import YOLO
 from ultralytics.engine.results import Results
 from typing import BinaryIO, TypeAlias, Annotated
@@ -14,8 +14,9 @@ logger = logger_factory(__name__)
 
 
 class DiceDetectorService:
-    def __init__(self, settings: DiceDetectorSettings):
-        self.model = YOLO(settings.model_path)
+    def __init__(self, dice_detector_settings: DiceDetectorSettings, image_store_settings: ImageStoreSettings):
+        self.model = YOLO(dice_detector_settings.model_path)
+        self.image_store = image_store_settings.images_folder
         self.class_names = ["one",
                             "two",
                             "three",
@@ -29,7 +30,7 @@ class DiceDetectorService:
         model_results: list[Results] = self.model(preprocessed_image)
         _, counts = np.unique(model_results[0].boxes.cls.int(), return_counts=True)
         image_id = uuid.uuid4()
-        model_results[0].save(f"Images/{image_id}.jpg")
+        model_results[0].save(f"{self.image_store}/{image_id}.jpg")
         return {"image_id": image_id,
                 "results": dict(zip(self.class_names, counts.tolist()))}
 
@@ -39,8 +40,8 @@ class DiceDetectorService:
 
 
 @lru_cache
-def get_service(settings: DiceDetectorSettingsDep) -> DiceDetectorService:
-    return DiceDetectorService(settings=settings)
+def get_service(dice_detector_settings: DiceDetectorSettingsDep, image_store_settings: ImageStoreSettingsDep) -> DiceDetectorService:
+    return DiceDetectorService(dice_detector_settings=dice_detector_settings, image_store_settings=image_store_settings)
 
 
 DiceDetectorServiceDep: TypeAlias = Annotated[DiceDetectorService, Depends(get_service)]
