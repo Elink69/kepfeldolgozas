@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from Controllers import DiceDetectorRouter
 from dotenv import load_dotenv
 import os
@@ -42,3 +43,11 @@ async def lifespan(app: FastAPI, image_store_settings=ImageStoreSettings()):
 app = FastAPI(lifespan=lifespan)
 
 app.include_router(DiceDetectorRouter)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[os.getenv("ALLOWED_ORIGINS")], 
+    allow_credentials=True,
+    allow_methods=["GET", "POST"], 
+    allow_headers=["*"],
+)
