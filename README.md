@@ -37,3 +37,15 @@
 
 5. Konzolból indítsuk el a tanítást
     - yolo detect train data=data.yaml model=yolo11n.pt epochs=100 imgsz=640
+
+
+
+# Frontend indítás
+
+1. Node.js telepítés
+
+2. cd frontend-react
+
+3. npm install
+
+4. npm start 
