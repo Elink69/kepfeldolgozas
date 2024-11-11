@@ -46,8 +46,8 @@ app.include_router(DiceDetectorRouter)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[os.getenv("ALLOWED_ORIGINS")], 
+    allow_origins=[os.getenv("ALLOWED_ORIGINS")],
     allow_credentials=True,
-    allow_methods=["GET", "POST"], 
-    allow_headers=["*"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["*"]
 )
