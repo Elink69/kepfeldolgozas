@@ -1,4 +1,4 @@
-from logging import *
+from logging import Logger, StreamHandler, Formatter, getLogger, DEBUG
 import sys
 
 

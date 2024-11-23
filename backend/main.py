@@ -12,7 +12,9 @@ from Utils.Factories import logger_factory
 logger = logger_factory(__name__)
 
 if not os.path.exists("settings.env"):
-    logger.error("Nem található a settings.env fájl. Ezt létre kell hozni a megfelelő működéshez")
+    logger.error(
+        "Nem található a settings.env fájl. Ezt létre kell hozni a megfelelő működéshez"
+    )
 
 load_dotenv("settings.env")
 
@@ -40,6 +42,7 @@ async def lifespan(app: FastAPI, image_store_settings=ImageStoreSettings()):
     if os.path.exists(images_path):
         rmtree(images_path)
 
+
 app = FastAPI(lifespan=lifespan)
 
 app.include_router(DiceDetectorRouter)
@@ -49,5 +52,5 @@ app.add_middleware(
     allow_origins=[os.getenv("ALLOWED_ORIGINS")],
     allow_credentials=True,
     allow_methods=["GET", "POST"],
-    allow_headers=["*"]
+    allow_headers=["*"],
 )

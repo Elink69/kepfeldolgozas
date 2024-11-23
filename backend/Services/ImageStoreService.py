@@ -11,8 +11,10 @@ class ImageStoreService:
     def get_image(self, image_id: str) -> str:
         file_path = os.path.abspath(os.path.join(self.folder, f"{image_id}.jpg"))
         if not os.path.isfile(file_path):
-            raise HTTPException(status_code=404,
-                                detail=f"Nem található fájl ilyen azonosítóval ({image_id})")
+            raise HTTPException(
+                status_code=404,
+                detail=f"Nem található fájl ilyen azonosítóval ({image_id})",
+            )
 
         return file_path
 
@@ -21,4 +23,6 @@ class ImageStoreService:
             os.remove(image_path)
 
 
-ImageStoreServiceDep: TypeAlias = Annotated[ImageStoreService, Depends(ImageStoreService)]
+ImageStoreServiceDep: TypeAlias = Annotated[
+    ImageStoreService, Depends(ImageStoreService)
+]

@@ -14,4 +14,6 @@ def get_settings() -> DiceDetectorSettings:
     return DiceDetectorSettings()
 
 
-DiceDetectorSettingsDep: TypeAlias = Annotated[DiceDetectorSettings, Depends(get_settings)]
+DiceDetectorSettingsDep: TypeAlias = Annotated[
+    DiceDetectorSettings, Depends(get_settings)
+]
