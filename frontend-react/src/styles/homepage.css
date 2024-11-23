@@ -1,0 +1,108 @@
+.homepage {
+    padding: 20px;
+    text-align: center;
+}
+
+.homepage-banner {
+    background-color: #B0C4DE;
+    color: #333333;
+    padding: 40px 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.homepage-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.homepage-description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #444444;
+}
+
+.homepage-button {
+    background-color: #FF4500;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.homepage-button:hover {
+    background-color: #FFA07A;
+}
+
+.homepage-features {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.feature-item {
+    background-color: #F0F8FF;
+    border: 1px solid #B0C4DE;
+    border-radius: 10px;
+    padding: 50px 20px;
+    flex: 1 1 calc(33% - 20px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.feature-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #008080;
+}
+
+.feature-description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    color: #555555;
+}
+
+.homepage-creators {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #F0F8FF;
+    border: 1px solid #B0C4DE;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.creators-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    color: #008080;
+    margin-bottom: 20px;
+}
+
+.creators-list {
+    list-style-type: disc;
+    padding: 0;
+    text-align: left;
+    display: inline-block;
+    margin-top: 0;
+}
+
+.creators-list li {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #444444;
+}
+
+.creators-list li::marker {
+    color: #008080;
+}

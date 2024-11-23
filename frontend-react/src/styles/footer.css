@@ -1,0 +1,24 @@
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #008080;
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+  }
+  
+.copyright {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: #FFFFFF;
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+.copyright p {
+    margin: 0;
+    line-height: 1.4;
+}

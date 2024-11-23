@@ -1,3 +1,4 @@
+import '../styles/dicespage.css';
 import {useEffect, useState} from 'react'
 import {Button} from 'primereact/button'
 import axios from 'axios';
@@ -46,21 +47,58 @@ const DicePages = () => {
 
     return (
         <>
-            <div>
-                <p>Az adott felületen kerülnek fel majd feltöltésre a dobókocka képek</p>
-                <p>A kép feltöltése után megjelenik, majd az eredmény képek</p>
-                <label htmlFor={`raw_image`} className={"custom-file-upload"}>Ide töltse fel a képet</label>
-                <input
-                    type="file"
-                    id={"raw_image"}
-                    onChange={(e)=> {
-                        handleImageChange(e)
-                    }}
-                    accept={"image/*"}
-                />
-                <Button label={'Törlés'} severity={'danger'} hidden={!rawImage} className={'me-3'} onClick={e => deleteResult()}/>
-                <Button label={'Beküldés'} severity={'info'} hidden={!rawImage} className={'me-3'} onClick={handleSubmit}/>
-                <img src={rawImage} hidden={!rawImage} height={'250px'} width={'250px'} alt="kép"/>
+            <div className="dices-page">
+                <section className="dice-upload-banner">
+                    <p className="page-description">
+                    Töltse fel a dobókockák képét az alábbi feltöltési lehetőség segítségével. 
+                    Az alkalmazás képfeldolgozással elemzi a képet, és automatikusan meghatározza a dobókockákon található számokat. 
+                    Ez segít gyorsan és egyszerűen kiszámítani a kockák összesített értékét anélkül, hogy manuálisan kellene leolvasnia a pontokat.
+                    </p>
+                </section>
+
+                <div className="dice-sections-container">
+                    <section className="dice-upload-section">
+                        <h2>Feltöltés</h2>
+                        <p>Az alábbiakban töltheti fel a dobókocka képét:</p>
+                        <input
+                            type="file"
+                            id="raw_image"
+                            onChange={(e) => handleImageChange(e)}
+                            accept="image/*"
+                        />
+                        <div className="button-container">
+                            <Button
+                                label="Törlés"
+                                hidden={!rawImage}
+                                className="me-3"
+                                onClick={deleteResult}
+                            />
+                            <Button
+                                label="Beküldés"
+                                hidden={!rawImage}
+                                className="me-3"
+                                onClick={handleSubmit}
+                            />
+                        </div>
+                        {rawImage && (
+                            <img
+                                src={rawImage}
+                                alt="Uploaded"
+                                className="uploaded-image"
+                            />
+                        )}
+                    </section>
+
+                    <section className="dice-results-section">
+                        <h2>Eredmények</h2>
+                        <p>A kiértékelés eredményei itt jelennek meg:</p>
+                        {response && (
+                            <div>
+                                <p>Dobókocka pontértékek: {response.dice_values.join(', ')}</p>
+                            </div>
+                        )}
+                    </section>
+                </div>
             </div>
         </>
     )
