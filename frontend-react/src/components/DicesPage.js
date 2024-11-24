@@ -1,9 +1,11 @@
 import '../styles/dicespage.css';
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import {Button} from 'primereact/button'
 import axios from 'axios';
 
-const DicePages = () => {
+const diceIndex = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6 };
+
+const DicePage = () => {
     const [rawImage, setRawImage] = useState()
     const [fileUpload, setFileUpload] = useState()
     const [response, setResponse] = useState()
@@ -92,9 +94,15 @@ const DicePages = () => {
                     <section className="dice-results-section">
                         <h2>Eredmények</h2>
                         <p>A kiértékelés eredményei itt jelennek meg:</p>
-                        {response && (
+                        {response && response.results && (
                             <div>
-                                <p>Dobókocka pontértékek: {response.dice_values.join(', ')}</p>
+                                <p>Dobókocka pontértékek:</p>
+                                <p>{
+                                    Object.entries(response.results).map(([key, value]) => `${value} * ${diceIndex[key]}`).join(" + ")
+                                }</p>
+                                <p>Értékek összege: <span className="result-highlight">{
+                                    Object.entries(response.results).reduce((total, [key, value]) =>  total + value * diceIndex[key], 0)
+                                }</span></p>
                             </div>
                         )}
                     </section>
@@ -104,4 +112,4 @@ const DicePages = () => {
     )
 }
 
-export default DicePages;
+export default DicePage;

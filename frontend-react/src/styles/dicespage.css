@@ -1,4 +1,7 @@
 .dices-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
     padding: 20px;
     text-align: center;
 }
@@ -6,9 +9,10 @@
 .dice-upload-banner {
     background-color: #B0C4DE;
     color: #333333;
-    padding: 40px 20px;
+    padding: 20px;
     border-radius: 10px;
     margin-bottom: 30px;
+    flex-shrink: 0;
 }
 
 .page-title {
@@ -29,7 +33,6 @@
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    height: 500px;
     overflow: hidden;
 }
 
@@ -48,27 +51,14 @@
     text-align: center;
     font-family: 'Poppins', sans-serif;
     color: #333333;
-}
-
-.dice-upload-section {
-    max-width: 100%;
-}
-
-.dice-results-section {
-    min-width: 45%;
-}
-
-.upload-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 20px;
+    overflow: hidden;
 }
 
 .dice-upload-section img {
-    max-width: 100%;
-    max-height: 300px;
+    max-width: 75%;
+    max-height: 75%;
     object-fit: contain;
+    margin-bottom: 10px;
 }
 
 .dice-upload-section:hover {
@@ -89,7 +79,6 @@
 
 .uploaded-image {
     margin-top: 20px;
-    max-width: 100%;
     height: auto;
     border-radius: 10px;
 }
@@ -99,4 +88,17 @@
     display: flex;
     justify-content: center;
     gap: 20px;
+}
+
+.result-highlight {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #FF4500;
+    margin-top: 10px;
+    text-align: center;
+    background-color: #FFF3E0;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #FF4500;
+    display: inline-block;
 }

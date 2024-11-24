@@ -23,11 +23,6 @@ header {
     border-radius: 5px;
 }
   
-.nav-item:hover {
-    background-color: #FFA07A;
-    color: #333333;
-}
-  
 .nav-cim {
     padding: 20px 0;
     background-color: #008080;
