@@ -1,27 +1,43 @@
 import '../styles/dicespage.css';
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {Button} from 'primereact/button'
 import axios from 'axios';
 
-const diceIndex = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6 };
+const diceIndex = {one: 1, two: 2, three: 3, four: 4, five: 5, six: 6};
 
 const DicePage = () => {
     const [rawImage, setRawImage] = useState()
     const [fileUpload, setFileUpload] = useState()
     const [response, setResponse] = useState()
+    const [finalImage, setFinalImage] = useState()
 
     const handleImageChange = (e) => {
         const file = e.target.files[0]
-        if(!file){
+        if (!file) {
             return
         }
         const reader = new FileReader()
         setFileUpload(file)
-		reader.onloadend = () => {
-			const imageDataUri = reader.result
-			setRawImage(imageDataUri)
-		}
-		reader.readAsDataURL(file)
+        reader.onloadend = () => {
+            const imageDataUri = reader.result
+            setRawImage(imageDataUri)
+        }
+        reader.readAsDataURL(file)
+    }
+
+    const getImage = async (id) => {
+        try {
+            if (id) {
+                const response = await fetch(`http://127.0.0.1:8000/download_image/${id}`);
+                const imageBlob = await response.blob();
+                const imageObjectUrl = URL.createObjectURL(imageBlob);
+                setFinalImage(imageObjectUrl);
+                console.log("Sikeres kép lekérés")
+            }
+        } catch (err) {
+            console.error("Error message: ", err);
+        }
+
     }
 
     const handleSubmit = async (e) => {
@@ -32,19 +48,23 @@ const DicePage = () => {
         try {
             // Replace with your actual API endpoint
             const response = await axios.post('http://127.0.0.1:8000/upload_image', formData, {
-              headers: {
-                'Content-Type': 'multipart/form-data',  // Ensure the proper content type for file uploads
-              },
+                headers: {
+                    'Content-Type': 'multipart/form-data',  // Ensure the proper content type for file uploads
+                },
             });
 
-            setResponse(response.data);  // Set the response from the API
-          } catch (err) {
+            await setResponse(response.data);  // Set the response from the API
+            getImage(response.data.image_id);
+        } catch (err) {
             console.error("Error message: ", err);
-          }
+        }
     }
 
     const deleteResult = () => {
         setRawImage(null)
+        setResponse(null)
+        setFinalImage(null)
+        setFileUpload(null)
     }
 
     return (
@@ -52,9 +72,11 @@ const DicePage = () => {
             <div className="dices-page">
                 <section className="dice-upload-banner">
                     <p className="page-description">
-                    Töltse fel a dobókockák képét az alábbi feltöltési lehetőség segítségével. 
-                    Az alkalmazás képfeldolgozással elemzi a képet, és automatikusan meghatározza a dobókockákon található számokat. 
-                    Ez segít gyorsan és egyszerűen kiszámítani a kockák összesített értékét anélkül, hogy manuálisan kellene leolvasnia a pontokat.
+                        Töltse fel a dobókockák képét az alábbi feltöltési lehetőség segítségével.
+                        Az alkalmazás képfeldolgozással elemzi a képet, és automatikusan meghatározza a dobókockákon
+                        található számokat.
+                        Ez segít gyorsan és egyszerűen kiszámítani a kockák összesített értékét anélkül, hogy manuálisan
+                        kellene leolvasnia a pontokat.
                     </p>
                 </section>
 
@@ -101,9 +123,16 @@ const DicePage = () => {
                                     Object.entries(response.results).map(([key, value]) => `${value} * ${diceIndex[key]}`).join(" + ")
                                 }</p>
                                 <p>Értékek összege: <span className="result-highlight">{
-                                    Object.entries(response.results).reduce((total, [key, value]) =>  total + value * diceIndex[key], 0)
+                                    Object.entries(response.results).reduce((total, [key, value]) => total + value * diceIndex[key], 0)
                                 }</span></p>
                             </div>
+                        )}
+                        {response && response.image_id && finalImage && (
+                            <img
+                                src={finalImage}
+                                alt={"Final image"}
+                                className={"uploaded-image"}
+                            />
                         )}
                     </section>
                 </div>
