@@ -25,7 +25,6 @@
     font-family: 'Roboto', sans-serif;
     font-size: 1.1rem;
     line-height: 1.8;
-    margin-bottom: 20px;
     color: #444444;
 }
 
@@ -34,6 +33,7 @@
     justify-content: space-between;
     gap: 20px;
     overflow: hidden;
+    padding: 10px;
 }
 
 .dice-upload-section,
@@ -46,32 +46,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     overflow: hidden;
     text-align: center;
     font-family: 'Poppins', sans-serif;
     color: #333333;
     overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.dice-upload-section img {
+.dice-upload-section img, .dice-results-section img {
     max-width: 75%;
     max-height: 75%;
     object-fit: contain;
     margin-bottom: 10px;
 }
 
-.dice-upload-section:hover {
+.dice-upload-section:hover, .dice-results-section:hover {
     border-color: #FF4500;
 }
 
-.dice-upload-section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #008080;
-}
-
-.dice-results-section h2 {
+.dice-upload-section h2, .dice-results-section h2 {
     font-size: 1.5rem;
     margin-bottom: 10px;
     color: #008080;
@@ -81,6 +76,27 @@
     margin-top: 20px;
     height: auto;
     border-radius: 10px;
+}
+
+.dice-results-icons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.dice-result-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dice-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
 }
 
 .button-container {

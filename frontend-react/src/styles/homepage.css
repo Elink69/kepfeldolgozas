@@ -55,10 +55,10 @@
 }
 
 .feature-item {
-    display: flex; /* Enable flexbox */
-    flex-direction: column; /* Stack children vertically */
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: #F0F8FF;
     border: 1px solid #B0C4DE;
     border-radius: 10px;

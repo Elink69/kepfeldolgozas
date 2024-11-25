@@ -4,6 +4,14 @@ import {Button} from 'primereact/button'
 import axios from 'axios';
 
 const diceIndex = {one: 1, two: 2, three: 3, four: 4, five: 5, six: 6};
+const diceIcons = {
+    one: "/dice-icons/dice_1.png",
+    two: "/dice-icons/dice_2.png",
+    three: "/dice-icons/dice_3.png",
+    four: "/dice-icons/dice_4.png",
+    five: "/dice-icons/dice_5.png",
+    six: "/dice-icons/dice_6.png"
+};
 
 const DicePage = () => {
     const [rawImage, setRawImage] = useState()
@@ -115,13 +123,24 @@ const DicePage = () => {
 
                     <section className="dice-results-section">
                         <h2>Eredmények</h2>
-                        <p>A kiértékelés eredményei itt jelennek meg:</p>
+                        {!response && <p>A kiértékelés eredményei itt fognak megjelenni.</p>}
                         {response && response.results && (
                             <div>
                                 <p>Dobókocka pontértékek:</p>
-                                <p>{
-                                    Object.entries(response.results).map(([key, value]) => `${value} * ${diceIndex[key]}`).join(" + ")
-                                }</p>
+                                <div className="dice-results-icons">
+                                    {Object.entries(response.results).map(([key, value], index) => (
+                                        <span key={index} className="dice-result-item">
+                                            <span>{value} ×</span>
+                                            <img 
+                                                src={diceIcons[key]} 
+                                                alt={key} 
+                                                className="dice-icon" 
+                                            />
+                                        </span>
+                                    )).reduce((acc, item, index, arr) => {
+                                        return acc.concat(index < arr.length - 1 ? [item, " + "] : [item]);
+                                    }, [])}
+                                </div>
                                 <p>Értékek összege: <span className="result-highlight">{
                                     Object.entries(response.results).reduce((total, [key, value]) => total + value * diceIndex[key], 0)
                                 }</span></p>

@@ -10,7 +10,7 @@ const HomePage = () => {
                 <p className="homepage-description">
                     Ez az alkalmazás a <strong>Képfeldolgozás haladóknak</strong> MSc gyakorlat keretében jött létre, 
                     azzal a céllal, hogy automatizálja a dobókockákról készült képek feldolgozását. Az applikáció segítségével 
-                    könnyedén meghatározható a feltöltött képen levő kockák felső lapjain található pontértékeket.
+                    könnyedén meghatározhatóak a feltöltött képen levő kockák felső lapjain található pontértékeket, illetve az aktuális kockadobás összértéke.
                 </p>
 				<Link to={'/dices'} className={"homepage-button"}>Kezdés</Link>
             </section>
