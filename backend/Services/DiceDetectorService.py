@@ -33,7 +33,7 @@ class DiceDetectorService:
         preprocessed_image = self._preprocess_image(image)
         model_results: list[Results] = self.model(preprocessed_image)
         classes, counts = np.unique(
-            model_results[0].boxes.cls.int(), return_counts=True
+            model_results[0].boxes.cls.int().cpu(), return_counts=True
         )
         image_id = uuid.uuid4()
         model_results[0].save(f"{self.image_store}/{image_id}.jpg")
